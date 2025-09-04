@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reset Your Password</title>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      background: #f8fafc;
+      font-family: Arial, sans-serif;
+    "
+  >
+    <div style="max-width: 600px; margin: 0 auto; padding: 24px">
+      <!-- Header -->
+      <div style="display: flex; align-items: center; margin-bottom: 20px">
+        <div style="font-size: 20px; font-weight: bold; color: #1e293b">
+          ShopCart
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div
+        style="
+          border: 1px solid #e2e8f0;
+          border-radius: 16px;
+          background: #ffffff;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        "
+      >
+        <div style="padding: 32px">
+          <h1
+            style="
+              font-size: 22px;
+              font-weight: bold;
+              color: #0f172a;
+              margin: 0 0 8px 0;
+            "
+          >
+            Reset your password
+          </h1>
+          <p
+            style="
+              color: #334155;
+              font-size: 14px;
+              line-height: 1.5;
+              margin: 0 0 20px 0;
+            "
+          >
+            You requested to reset your password. Click the button below to set
+            a new one. This link will expire in <strong>30 minutes</strong>.
+          </p>
+
+          <!-- Button -->
+          <a
+            href="{{TOKEN}}"
+            style="
+              display: inline-block;
+              width: 90%;
+              text-align: center;
+              background: #2563eb;
+              color: #ffffff;
+              text-decoration: none;
+              font-weight: bold;
+              font-size: 14px;
+              padding: 12px 16px;
+              border-radius: 12px;
+              margin-top: 16px;
+            "
+          >
+            Reset password
+          </a>
+
+          <!-- Fallback link -->
+          <div
+            style="
+              margin-top: 20px;
+              padding: 12px;
+              background: #f1f5f9;
+              font-size: 12px;
+              color: #475569;
+              border: 1px solid #e2e8f0;
+              border-radius: 8px;
+            "
+          >
+            If the button doesn't work, copy and paste this URL into your
+            browser:
+            <div
+              style="
+                margin-top: 8px;
+                word-break: break-all;
+                font-family: monospace;
+                font-size: 11px;
+              "
+            >
+              <a
+                href="{{TOKEN}}"
+                style="color: #1d4ed8; text-decoration: underline"
+                >{{TOKEN}}</a
+              >
+            </div>
+          </div>
+
+          <p style="margin-top: 20px; font-size: 11px; color: #64748b">
+            If you didn't request this, you can safely ignore this message. For
+            help, contact
+            <a
+              href="mailto:support@example.com"
+              style="color: #2563eb; text-decoration: underline"
+              >mathivan07@gmail.com</a
+            >.
+          </p>
+        </div>
+        <div
+          style="
+            border-top: 1px solid #e2e8f0;
+            background: #f8fafc;
+            padding: 12px 20px;
+            font-size: 11px;
+            color: #64748b;
+            border-radius: 0 0 16px 16px;
+            display: flex;
+            justify-content: space-between;
+          "
+        >
+          <span>© 2025 ShopCart Inc.</span>
+        </div>
+      </div>
+
+      <p
+        style="
+          margin-top: 16px;
+          text-align: center;
+          font-size: 11px;
+          color: #94a3b8;
+        "
+      >
+        Tip: Replace <code>{{TOKEN}}</code> with a time-limited token from your
+        backend.
+      </p>
+    </div>
+  </body>
+</html>

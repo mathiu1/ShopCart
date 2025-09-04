@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+
+
+/* Add custom keyframes + animation */
+@layer utilities {
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 3s ease infinite;
+  }
+
+  /* Scrollbar Utilities */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
+}
+
+
+/* Always show scrollbar on mobile */
+.scrollbar-show {
+  -ms-overflow-style: auto; /* IE and Edge */
+  scrollbar-width: thin;    /* Firefox */
+}
+
+.scrollbar-show::-webkit-scrollbar {
+  height: 6px;
+  display: block; /* Chrome, Safari */
+}
+
+/* Hide scrollbar on desktop */
+@media (min-width: 768px) {
+  .scrollbar-hide-desktop {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none;    /* Firefox */
+  }
+
+  .scrollbar-hide-desktop::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+
+}
