@@ -4,9 +4,11 @@
   "description": "ecom",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon backend/server.js",
-    "dev": "set NODE_ENV=Development&&nodemon backend/server.js",
-    "prod": "set NODE_ENV=Production&&nodemon backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "prod": "NODE_ENV=production node backend/server.js",
+    "start": "node backend/server.js",
+    "build:frontend": "cd frontend&&npm install&&npm run build",
+    "build": "npm run build:frontend",
     "seeder": "node backend/utils/seeder.js"
   },
   "author": "MATHIVANAN",
