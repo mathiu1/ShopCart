@@ -17,11 +17,14 @@ import noResults from "../../../public/image/no-results.png";
 import Search from "../../components/Search";
 import { formatPriceINR } from "../../components/utils/formatPriceINR";
 
-
 const AllProducts = () => {
   const dispatch = useDispatch();
   const { search } = useParams();
-  const searchItem = search === "all" ? null : search;
+
+  const [searchItem, setSearchItem] = useState(
+    search === "all" ? null : search
+  );
+  const [clearSearch, setClearSearch] = useState(false);
 
   const [isSidebar, setIsSidebar] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
@@ -44,12 +47,14 @@ const AllProducts = () => {
     Categories,
   } = useSelector((state) => state.productsState);
 
-  const [oldValue,setOldValue]=useState([])
-
   const setPageNo = (pageNo) => {
     setChangeFlag(true);
     setCurrentPage(pageNo);
   };
+
+  useEffect(() => {
+    setChangeFlag(true);
+  }, [searchItem]);
 
   useEffect(() => {
     if (error) {
@@ -57,10 +62,9 @@ const AllProducts = () => {
       return;
     }
 
+    console.log(searchItem);
+
     if (ChangeFlag) {
-    console.log(rangeValChange)
-    setOldValue(rangeValChange)
-      
       dispatch(
         getProducts(
           searchItem,
@@ -84,15 +88,12 @@ const AllProducts = () => {
     ChangeFlag,
   ]);
 
- 
-
   useEffect(() => {
-      
     if (minValue !== undefined && maxValue !== undefined) {
       setRangeVal([minValue, maxValue]);
       setRangeValChange([minValue, maxValue]);
     }
-  }, [selCategories, minValue, maxValue]);
+  }, [selCategories, minValue, maxValue, search]);
 
   const handleCategory = (cate) => {
     setRangeValChange([]);
@@ -103,7 +104,8 @@ const AllProducts = () => {
         ? selCategories.filter((c) => c !== cate)
         : [...selCategories, cate]
     );
-
+    setSearchItem(null);
+    setClearSearch(true);
     setChangeFlag(true);
   };
 
@@ -145,7 +147,18 @@ const AllProducts = () => {
                     <IoClose size={14} />
                   </div>
                 ))}
-
+{searchItem?.trim() && (
+                  <div
+                    className="flex items-center gap-1 px-3 py-1 rounded-full bg-indigo-500 text-white text-sm cursor-pointer shadow-md"
+                    onClick={() => {
+                      setSearchItem(null);
+                      setClearSearch(true);
+                    }}
+                  >
+                    <span>{searchItem}</span>
+                    <IoClose size={14} />
+                  </div>
+                )}
                 {ratings > 0 && (
                   <div
                     className="flex items-center gap-1 px-3 py-1 rounded-full bg-indigo-500 text-white text-sm cursor-pointer shadow-md"
@@ -287,6 +300,19 @@ const AllProducts = () => {
                   </div>
                 )}
 
+                {searchItem?.trim() && (
+                  <div
+                    className="flex items-center gap-1 px-3 py-1 rounded-full bg-indigo-500 text-white text-sm cursor-pointer shadow-md"
+                    onClick={() => {
+                      setSearchItem(null);
+                      setClearSearch(true);
+                    }}
+                  >
+                    <span>{searchItem}</span>
+                    <IoClose size={14} />
+                  </div>
+                )}
+
                 {(rangeValChange[0] !== minValue ||
                   rangeValChange[1] !== maxValue) && (
                   <div
@@ -380,7 +406,11 @@ const AllProducts = () => {
 
             {/* Products */}
             <div className="flex-1 p-4 md:p-6">
-              <Search />
+              <Search
+                setValue={setSearchItem}
+                clear={clearSearch}
+                setClear={setClearSearch}
+              />
 
               {/* Sort (MD+) */}
               <div className="hidden md:flex justify-end mt-4 relative">

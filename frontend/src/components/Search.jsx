@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const Search = () => {
+const Search = ({ setValue, clear, setClear }) => {
   const navigator = useNavigate();
   const { search: s } = useParams();
 
@@ -9,13 +9,25 @@ const Search = () => {
 
   useEffect(() => {
     if (search === "") {
+      setValue("")
       navigator(`/products/all`);
     }
   }, [search, navigator]);
 
+  useEffect(() => {
+
+    
+    if (clear) {
+      setSearch("");
+      setClear(false);
+    }
+  }, [clear]);
+
   const searchHandler = (e) => {
     e.preventDefault();
     if (search.trim() !== "") {
+      setValue(search);
+
       navigator(`/products/${search}`);
     }
   };
@@ -23,7 +35,6 @@ const Search = () => {
   return (
     <form onSubmit={searchHandler} className="w-full">
       <div className="flex items-center border border-slate-300 rounded-xl bg-white shadow-sm focus-within:ring-2 focus-within:ring-slate-400 overflow-hidden">
-        
         <input
           className="w-full px-4 py-2 text-sm md:text-base text-slate-700 placeholder-slate-400 outline-none"
           type="search"
@@ -32,7 +43,6 @@ const Search = () => {
           placeholder="Search for products..."
         />
 
-       
         <button
           type="submit"
           className="bg-slate-100 hover:bg-slate-200 px-4 py-2 border-l border-slate-300 flex items-center justify-center transition"

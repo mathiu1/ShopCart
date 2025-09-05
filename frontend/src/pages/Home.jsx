@@ -12,6 +12,7 @@ import HorizontalSlider from "../components/HorizontalSlider";
 const Home = () => {
   const dispatch = useDispatch();
   const navigator = useNavigate();
+  const[search,setSearch]=useState("")
 
   const { products, loading, error } = useSelector(
     (state) => state.productsState
@@ -50,7 +51,7 @@ const Home = () => {
 
           {/* Search */}
           <div className="mb-6">
-            <Search />
+            <Search setValue={setSearch}/>
           </div>
 
           {/* Banner */}
