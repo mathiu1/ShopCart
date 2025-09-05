@@ -17,7 +17,7 @@ const VerifyOTP = () => {
   const navigator = useNavigate();
   const dispatch = useDispatch();
  
-  const { user, resendOTP, isAuthenticated,error ,updateLoading} = useSelector(
+  const { user, resendOTP, isAuthenticated,error ,updateLoading,updateVerifyLoading} = useSelector(
     (state) => state.authState
   );
 
@@ -172,11 +172,11 @@ const VerifyOTP = () => {
             {/* Show Verify button only if OTP not expired */}
             {expiryTime > 0 && (
               <button
-              disabled={updateLoading}
+              disabled={updateVerifyLoading}
                 type="submit"
                 className="w-full py-2.5 rounded-lg shadow-md font-semibold transition bg-yellow-400 hover:bg-yellow-500 text-white"
               >
-                {updateLoading?"Verify...":"Verify OTP"}
+                {updateVerifyLoading?"Verify...":"Verify OTP"}
               </button>
             )}
           </form>

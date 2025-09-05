@@ -8,6 +8,7 @@ const authSlice = createSlice({
     otpVerify: false,
     resendOTP: false,
     updateLoading:false,
+    updateVerifyLoading:false,
   },
   reducers: {
     loginRequest(state, action) {
@@ -62,7 +63,7 @@ const authSlice = createSlice({
       return {
         ...state,
         loading: true,
-        updateLoading:true
+        updateVerifyLoading:true
       };
     },
     verifySuccess(state, action) {
@@ -70,7 +71,7 @@ const authSlice = createSlice({
         loading: false,
         isAuthenticated: action.payload.isAuthenticated,
         user: action.payload.user,
-        updateLoading:false,
+        updateVerifyLoading:false,
       };
     },
     verifyFail(state, action) {
@@ -78,7 +79,7 @@ const authSlice = createSlice({
         ...state,
         loading: false,
         error: action.payload,
-        updateLoading:false,
+        updateVerifyLoading:false,
       };
     },
     resendOtpRequest(state, action) {
