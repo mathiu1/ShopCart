@@ -101,7 +101,7 @@ const AllProducts = () => {
   }, [selCategories, minValue, maxValue, search]);
 
   const handleCategory = (cate) => {
-    
+    setRangeValChange([]);
     setCurrentPage(1);
 
     setSelCategories(
