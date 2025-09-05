@@ -12,6 +12,7 @@ import { IoClose, IoFilter } from "react-icons/io5";
 import { FaSortAmountDownAlt } from "react-icons/fa";
 import Pagination from "react-js-pagination";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import noResults from "../../../public/image/notfound.png";
 import Search from "../../components/Search";
@@ -20,6 +21,7 @@ import { formatPriceINR } from "../../components/utils/formatPriceINR";
 const AllProducts = () => {
   const dispatch = useDispatch();
   const { search } = useParams();
+  const navigate=useNavigate();
 
   const [searchItem, setSearchItem] = useState(
     search === "all" ? null : search
@@ -510,14 +512,14 @@ const AllProducts = () => {
                     <img
                       src={noResults}
                       alt="No results"
-                      className="w-36 h-36 sm:w-44 sm:h-44 opacity-90"
+                      className="w-36 h-36 opacity-90"
                     />
                     {/* Soft background circle */}
                     <div className="absolute inset-0 rounded-full bg-yellow-100/40 blur-2xl -z-10" />
                   </div>
 
                   {/* Text */}
-                  <h2 className="mt-6 text-xl sm:text-2xl font-semibold text-gray-700">
+                  <h2 className="mt-1 text-xl sm:text-2xl font-semibold text-gray-700">
                     No Products Found
                   </h2>
                   <p className="mt-2 text-sm text-gray-500 max-w-xs">
