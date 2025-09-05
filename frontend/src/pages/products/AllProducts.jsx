@@ -21,7 +21,7 @@ import { formatPriceINR } from "../../components/utils/formatPriceINR";
 const AllProducts = () => {
   const dispatch = useDispatch();
   const { search } = useParams();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const [searchItem, setSearchItem] = useState(
     search === "all" ? null : search
@@ -55,6 +55,7 @@ const AllProducts = () => {
   };
 
   useEffect(() => {
+    console.log("search item")
     setChangeFlag(true);
   }, [searchItem]);
 
@@ -67,7 +68,8 @@ const AllProducts = () => {
     console.log(searchItem);
 
     if (ChangeFlag) {
-      setIsSidebar(false)
+      console.log("loadapi")
+      setIsSidebar(false);
       dispatch(
         getProducts(
           searchItem,
@@ -150,7 +152,7 @@ const AllProducts = () => {
                     <IoClose size={14} />
                   </div>
                 ))}
-{searchItem?.trim() && (
+                {searchItem?.trim() && (
                   <div
                     className="flex items-center gap-1 px-3 py-1 rounded-full bg-indigo-500 text-white text-sm cursor-pointer shadow-md"
                     onClick={() => {
@@ -529,7 +531,10 @@ const AllProducts = () => {
 
                   {/* Action button */}
                   <button
-                    onClick={() => navigate("/products/all")}
+                    onClick={() => {
+                      setChangeFlag(true)
+                      navigate("/products/all");
+                    }}
                     className="mt-6 px-5 py-2 rounded-lg bg-yellow-500 text-white font-medium shadow hover:bg-yellow-600 transition"
                   >
                     Back to Home
