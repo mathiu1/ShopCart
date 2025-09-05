@@ -23,6 +23,7 @@ import {
 } from "recharts";
 
 import { formatPriceINR } from "../../components/utils/formatPriceINR";
+import Loader from "../../components/Loader";
 
 
 const productNames = ["Laptop", "Phone", "Shoes", "Headphones", "Watch", "Bag"];
@@ -79,7 +80,7 @@ const getMonthLabel = (date) => {
 const Dashboard = () => {
   const { products = [] } = useSelector((state) => state.productsState);
   const { adminOrders = [] } = useSelector((state) => state.orderState);
-  const { users = [] } = useSelector((state) => state.usersState);
+  const { users = [] ,loading} = useSelector((state) => state.usersState);
 
   const dispatch = useDispatch();
 
@@ -193,6 +194,9 @@ const Dashboard = () => {
 
   const chartData = getAggregatedChartData();
   const barWidth = Math.floor(windowWidth / 40);
+
+
+  if(loading) return <Loader/>
 
   return (
     <div className="space-y-10">

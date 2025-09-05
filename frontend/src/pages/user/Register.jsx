@@ -101,14 +101,15 @@ const Register = () => {
 };
 
 
-  useEffect(() => {
-    if (isAuthenticated) navigator("/");
-    if(otpVerify)navigator("/verify-otp")
+useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearAuthError());
       return
     }
+    if (isAuthenticated) navigator("/");
+    if(otpVerify)navigator("/verify-otp")
+    
   }, [error, isAuthenticated,otpVerify]);
 
   return (

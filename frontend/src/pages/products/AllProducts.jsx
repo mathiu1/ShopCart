@@ -195,7 +195,7 @@ const AllProducts = () => {
               <div className="md:px-5 my-5 ">
                 <h2 className="font-medium mb-3">Categories</h2>
                 <div className="flex p-2 flex-wrap  max-h-64 overflow-y-auto gap-2">
-                  {Categories.map((category) => (
+                  {Categories?.map((category) => (
                     <button
                       key={category}
                       onClick={() => handleCategory(category)}
@@ -336,7 +336,7 @@ const AllProducts = () => {
               <div className="md:px-5 my-5 ">
                 <h2 className="font-medium mb-3">Categories</h2>
                 <div className="flex p-2 flex-wrap  max-h-64 overflow-y-auto gap-2">
-                  {Categories.map((category) => (
+                  {Categories?.map((category) => (
                     <button
                       key={category}
                       onClick={() => handleCategory(category)}

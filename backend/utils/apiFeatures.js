@@ -29,8 +29,7 @@ class APIFeatures {
 
     if (ratings) {
       queryRatings["ratings"] = {
-        ["$gte"]: Number(ratings),
-        ["$lt"]: Number(ratings) + 1,
+        ["$gte"]: Number(ratings)
       };
 
       this.query.find(queryRatings);
