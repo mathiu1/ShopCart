@@ -53,7 +53,7 @@ const Products = ({ product }) => {
 
         
         <button
-          disabled={product.stock === 0}
+          disabled={product.stock === 0 || loading}
           onClick={(e) => {
             e.stopPropagation();
             dispatch(addCartItem(product._id, 1));
@@ -64,7 +64,7 @@ const Products = ({ product }) => {
               : "bg-yellow-400 hover:bg-yellow-500 text-gray-900 shadow-sm"
           }`}
         >
-          {product.stock === 0 ? "Out of Stock" : loading?"Adding...":"Add to Cart"}
+          {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
         </button>
       </div>
     </div>
