@@ -11,7 +11,7 @@ import { createOrder } from "../../actions/orderActions";
 import { clearOrderError } from "../../slices/orderSlice";
 import { formatPriceINR } from "../../components/utils/formatPriceINR"
 
-const API_URL=import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 function PaymentMethodRadio({ value, onChange, name = "payment-method" }) {
   const OPTIONS = [
