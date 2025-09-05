@@ -13,7 +13,7 @@ import { FaSortAmountDownAlt } from "react-icons/fa";
 import Pagination from "react-js-pagination";
 import { useParams } from "react-router-dom";
 
-import noResults from "../../../public/image/no-results.png";
+import noResults from "../../../public/image/notfound.png";
 import Search from "../../components/Search";
 import { formatPriceINR } from "../../components/utils/formatPriceINR";
 
@@ -527,7 +527,7 @@ const AllProducts = () => {
 
                   {/* Action button */}
                   <button
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate("/products/all")}
                     className="mt-6 px-5 py-2 rounded-lg bg-yellow-500 text-white font-medium shadow hover:bg-yellow-600 transition"
                   >
                     Back to Home

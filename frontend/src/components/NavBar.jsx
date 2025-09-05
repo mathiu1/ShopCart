@@ -49,7 +49,7 @@ const NavBar = () => {
 
         
         <div className="flex items-center gap-2">
-          <IoIosSearch className="bg-slate-200 text-slate-600 p-1 text-3xl rounded-full cursor-pointer hover:bg-slate-300" />
+         {/* <IoIosSearch className="bg-slate-200 text-slate-600 p-1 text-3xl rounded-full cursor-pointer hover:bg-slate-300" />*/}
 
           <div className="flex relative">
             <Link to="/cart">
