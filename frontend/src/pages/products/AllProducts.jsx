@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import Stars from "../../components/stars";
+import Stars from "../../components/Stars";
 import Loader from "../../components/Loader";
 import Products from "../../components/products/Products";
 import toast from "react-hot-toast";
