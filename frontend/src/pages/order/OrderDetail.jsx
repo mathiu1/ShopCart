@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+
 import { MdArrowBack } from "react-icons/md";
 import Loader from "../../components/Loader";
 import { useDispatch, useSelector } from "react-redux";

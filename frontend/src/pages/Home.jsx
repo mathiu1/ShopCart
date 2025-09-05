@@ -8,8 +8,7 @@ import Products from "../components/products/Products";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Search from "../components/Search";
-import HorizontalSlider from "../components/HorizontalSlider"; // ✅ imported
-
+import HorizontalSlider from "../components/HorizontalSlider"; 
 const Home = () => {
   const dispatch = useDispatch();
   const navigator = useNavigate();
