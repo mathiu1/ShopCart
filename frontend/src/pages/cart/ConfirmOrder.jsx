@@ -241,14 +241,14 @@ const ConfirmOrder = () => {
             {/* total Price*/}
             <div className="flex  gap-5 justify-around items-center p-5 md:p-5 bg-white max-w-5xl mx-auto border border-slate-200 mt-5 md:rounded-2xl shadow-xl fixed bottom-0 w-full -ms-5 md:mx-auto md:static ">
               <div className="flex gap-2">
-                <h1 className="font-medium text-sm md:text-base">Total Price :</h1>
-                <p className="text-green-600 font-medium text-sm md:text-base">
+                <h1 className="font-medium  text-base">Total :</h1>
+                <p className="text-green-600 font-medium  text-base">
                   {formatPriceINR(total.toFixed(2))}
                 </p>
               </div>
               <button
                 onClick={checkoutHandler}
-                className="text-sm md:text-base bg-yellow-500 text-white p-2 px-2 md:px-7 rounded-full "
+                className="text-base bg-yellow-500 text-white p-2 px-2 md:px-7 rounded-full "
               >
                 Proceed to Pay
               </button>
