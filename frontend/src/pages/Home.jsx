@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BannerCarousel from "../components/BannerCarousel";
 import MetaData from "../components/MetaData";
 import { getAllProducts } from "../actions/productActions";
