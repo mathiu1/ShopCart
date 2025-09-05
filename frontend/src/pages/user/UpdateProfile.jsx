@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import MetaData from "../../components/metaData";
+import MetaData from "../../components/MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import { clearAuthError, updateProfile } from "../../actions/userActions";
 import toast from "react-hot-toast";
