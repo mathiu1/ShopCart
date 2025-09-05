@@ -7,7 +7,7 @@ import Loader from "../components/Loader";
 import Products from "../components/products/Products";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import Search from "../components/search";
+import Search from "../components/Search";
 import HorizontalSlider from "../components/HorizontalSlider"; // ✅ imported
 
 const Home = () => {

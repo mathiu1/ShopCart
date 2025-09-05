@@ -12,11 +12,11 @@ import { IoClose, IoFilter } from "react-icons/io5";
 import { FaSortAmountDownAlt } from "react-icons/fa";
 import Pagination from "react-js-pagination";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+
 import noResults from "../../../public/image/no-results.png";
-import Search from "../../components/search";
+import Search from "../../components/Search";
 import { formatPriceINR } from "../../components/utils/formatPriceINR";
-import { min } from "date-fns";
+
 
 const AllProducts = () => {
   const dispatch = useDispatch();
