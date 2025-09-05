@@ -65,6 +65,7 @@ const AllProducts = () => {
     console.log(searchItem);
 
     if (ChangeFlag) {
+      setIsSidebar(false)
       dispatch(
         getProducts(
           searchItem,
