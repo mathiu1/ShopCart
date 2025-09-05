@@ -1,4 +1,4 @@
-import Stars from "../../components/stars";
+import Stars from "../../components/Stars";
 
 import { IoHeart } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";

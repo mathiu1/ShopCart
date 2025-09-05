@@ -1,4 +1,4 @@
-import Stars from "../stars";
+import Stars from "../Stars";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addCartItem } from "../../actions/cartActions";
