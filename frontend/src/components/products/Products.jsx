@@ -1,6 +1,6 @@
 import Stars from "../Stars";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCartItem } from "../../actions/cartActions";
 import { formatPriceINR } from "../../components/utils/formatPriceINR"
 
@@ -8,6 +8,8 @@ import { formatPriceINR } from "../../components/utils/formatPriceINR"
 const Products = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const {loading}=useSelector(state=>state.cartState)
 
   return (
     <div
@@ -62,7 +64,7 @@ const Products = ({ product }) => {
               : "bg-yellow-400 hover:bg-yellow-500 text-gray-900 shadow-sm"
           }`}
         >
-          {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
+          {product.stock === 0 ? "Out of Stock" : loading?"Adding...":"Add to Cart"}
         </button>
       </div>
     </div>

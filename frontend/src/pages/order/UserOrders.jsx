@@ -5,15 +5,19 @@ import { MdRemoveShoppingCart } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 import { formatPriceINR } from "../../components/utils/formatPriceINR"
+import Loader from "../../components/Loader";
 
 export default function MyOrders() {
-  const { userOrders } = useSelector((state) => state.orderState);
+  const { userOrders,loading  } = useSelector((state) => state.orderState);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(userOrdersAction);
   }, [dispatch]);
+
+
+  if (loading) return <Loader />;
 
   return (
    

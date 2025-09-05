@@ -30,14 +30,14 @@ const cartSlice = createSlice({
           ...state,
           loading: false,
         };
-        toast.success("Alredy In Cart...");
+        toast.success("Already In Cart...");
       } else {
         state = {
           ...state,
           items: [...state.items, item],
           loading: false,
         };
-        toast.success("Item Add Cart Success");
+        toast.success(" Cart Item Added Successfully!");
         localStorage.setItem("cartItems", JSON.stringify(state.items));
       }
 

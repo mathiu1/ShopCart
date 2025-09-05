@@ -87,7 +87,7 @@ const AllProducts = () => {
  
 
   useEffect(() => {
-      console.log(oldValue);
+      
     if (minValue !== undefined && maxValue !== undefined) {
       setRangeVal([minValue, maxValue]);
       setRangeValChange([minValue, maxValue]);
