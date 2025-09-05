@@ -55,13 +55,14 @@ const authSlice = createSlice({
         ...state,
         loading: false,
         error: action.payload,
-        otpVerify: true,
+        otpVerify: false,
       };
     },
     verifyRequest(state, action) {
       return {
         ...state,
         loading: true,
+        updateLoading:true
       };
     },
     verifySuccess(state, action) {
@@ -69,6 +70,7 @@ const authSlice = createSlice({
         loading: false,
         isAuthenticated: action.payload.isAuthenticated,
         user: action.payload.user,
+        updateLoading:false,
       };
     },
     verifyFail(state, action) {
@@ -76,6 +78,7 @@ const authSlice = createSlice({
         ...state,
         loading: false,
         error: action.payload,
+        updateLoading:false,
       };
     },
     resendOtpRequest(state, action) {

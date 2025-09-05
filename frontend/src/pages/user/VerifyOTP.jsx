@@ -172,10 +172,11 @@ const VerifyOTP = () => {
             {/* Show Verify button only if OTP not expired */}
             {expiryTime > 0 && (
               <button
+              disabled={updateLoading}
                 type="submit"
                 className="w-full py-2.5 rounded-lg shadow-md font-semibold transition bg-yellow-400 hover:bg-yellow-500 text-white"
               >
-                Verify OTP
+                {updateLoading?"Verify...":"Verify OTP"}
               </button>
             )}
           </form>
@@ -185,7 +186,7 @@ const VerifyOTP = () => {
             <p className="text-sm text-slate-600">Didn’t get the code?</p>
             <button
               onClick={handleResend}
-              disabled={resendTimer > 0}
+              disabled={resendTimer > 0 || updateLoading }
               className={`mt-2 text-sm font-medium ${
                 resendTimer > 0
                   ? "text-gray-400 cursor-not-allowed"
