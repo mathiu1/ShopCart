@@ -1,10 +1,13 @@
 import { addCartItemRequest, addCartItemSuccess } from "../slices/cartSlice";
 import axios from "axios";
+
+const API_URL=import.meta.env.VITE_API_URL;
+
 export const addCartItem = (id, quantity) => async (dispatch) => {
   try {
     dispatch(addCartItemRequest());
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/v1/product/${id}`
+      `${API_URL}/product/${id}`
     );
     
     dispatch(

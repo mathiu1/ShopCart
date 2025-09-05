@@ -32,12 +32,15 @@ import {
 } from "../slices/productSlice";
 import toast from "react-hot-toast";
 
+
+const API_URL=import.meta.env.VITE_API_URL;
+
 export const getProducts =
   (searchItem, currentPage, price, category, ratings, sortingVal) =>
   async (dispatch) => {
     try {
       dispatch(productsRequest());
-      let link = `http://127.0.0.1:8000/api/v1/products`;
+      let link = `${API_URL}/products`;
 
       if (currentPage) {
         link += `?page=${currentPage}`;
@@ -83,7 +86,7 @@ export const getProducts =
 export const getAllProducts = () => async (dispatch) => {
   try {
     dispatch(productsRequest());
-    let link = `http://127.0.0.1:8000/api/v1/products?limit=1000`;
+    let link = `${API_URL}/products?limit=1000`;
 
     const { data } = await axios.get(link);
 
@@ -97,7 +100,7 @@ export const getProduct = (id) => async (dispatch) => {
   try {
     dispatch(productRequest());
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/v1/product/${id}`
+      `${API_URL}/product/${id}`
     );
     dispatch(productSuccess(data));
   } catch (error) {
@@ -117,7 +120,7 @@ export const createReview = (reviewData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `http://127.0.0.1:8000/api/v1/review`,
+      `${API_URL}/review`,
       reviewData,
       config
     );
@@ -131,7 +134,7 @@ export const getAdminProducts = () => async (dispatch) => {
   try {
     dispatch(adminProductsRequest());
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/v1/admin/products`,
+      `${API_URL}/admin/products`,
       { withCredentials: true }
     );
     dispatch(adminProductsSuccess(data));
@@ -150,7 +153,7 @@ export const createNewProduct = (productData) => async (dispatch) => {
       withCredentials: true,
     };
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/v1/admin/product/new`,
+      `${API_URL}/admin/product/new`,
       productData,
       config
     );
@@ -167,7 +170,7 @@ export const deleteProduct = (id) => async (dispatch) => {
       withCredentials: true,
     };
     await axios.delete(
-      `http://127.0.0.1:8000/api/v1/admin/product/${id}`,
+      `${API_URL}/admin/product/${id}`,
       config
     );
     dispatch(deleteProductSuccess());
@@ -186,7 +189,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
       withCredentials: true,
     };
     const { data } = await axios.put(
-      `http://127.0.0.1:8000/api/v1/admin/product/${id}`,
+      `${API_URL}/admin/product/${id}`,
       productData,
       config
     );
@@ -201,7 +204,7 @@ export const getReviews = (id) => async (dispatch) => {
     dispatch(reviewsRequest());
 
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/v1/admin/reviews`,
+      `${API_URL}/admin/reviews`,
       {
         params: { id }, 
         withCredentials: true, 
@@ -222,7 +225,7 @@ export const getReviews = (id) => async (dispatch) => {
 export const deleteReview = (productId, id) => async (dispatch) => {
   try {
     dispatch(deleteReviewRequest());
-    let link = `http://127.0.0.1:8000/api/v1/admin/review`;
+    let link = `${API_URL}/admin/review`;
 
     await axios.delete(link, {
       params: { productId, id },

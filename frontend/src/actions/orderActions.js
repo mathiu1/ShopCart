@@ -1,10 +1,12 @@
 import { adminOrderFail, adminOrderRequest, adminOrderSuccess, createOrderFail, createOrderRequest, createOrderSuccess, deleteOrderFail, deleteOrderRequest, deleteOrderSuccess, OrderDetailFail, OrderDetailRequest, OrderDetailSuccess, updateOrderFail, updateOrderRequest, updateOrderSuccess, userOrderFail, userOrderRequest, userOrderSuccess } from "../slices/orderSlice"
 import axios from "axios";
 
+const API_URL=import.meta.env.VITE_API_URL;
+
 export const createOrder = order => async(dispatch)=>{
     try {
         dispatch(createOrderRequest())
-      const {data}=  await axios.post(`http://127.0.0.1:8000/api/v1/order/new`,order,{withCredentials:true})
+      const {data}=  await axios.post(`${API_URL}/order/new`,order,{withCredentials:true})
       dispatch(createOrderSuccess(data))
        return data; 
 
@@ -16,7 +18,7 @@ export const createOrder = order => async(dispatch)=>{
 export const userOrders =  async(dispatch)=>{
     try {
         dispatch(userOrderRequest())
-      const {data}=  await axios.get(`http://127.0.0.1:8000/api/v1/myorders`,{withCredentials:true})
+      const {data}=  await axios.get(`${API_URL}/myorders`,{withCredentials:true})
      
       dispatch(userOrderSuccess(data))
 
@@ -28,7 +30,7 @@ export const userOrders =  async(dispatch)=>{
 export const orderDetail = id => async(dispatch)=>{
     try {
         dispatch(OrderDetailRequest())
-      const {data}=  await axios.get(`http://127.0.0.1:8000/api/v1/order/${id}`,{withCredentials:true})
+      const {data}=  await axios.get(`${API_URL}/order/${id}`,{withCredentials:true})
       
       dispatch(OrderDetailSuccess(data))
 
@@ -40,7 +42,7 @@ export const orderDetail = id => async(dispatch)=>{
 export const adminOrders = ()=> async(dispatch)=>{
     try {
         dispatch(adminOrderRequest())
-      const {data}=  await axios.get(`http://127.0.0.1:8000/api/v1/admin/orders`,{withCredentials:true})
+      const {data}=  await axios.get(`${API_URL}/admin/orders`,{withCredentials:true})
      
       dispatch(adminOrderSuccess(data))
 
@@ -52,7 +54,7 @@ export const adminOrders = ()=> async(dispatch)=>{
 export const deleteOrders = id => async(dispatch)=>{
     try {
         dispatch(deleteOrderRequest())
-      await axios.delete(`http://127.0.0.1:8000/api/v1/admin/order/${id}`,{withCredentials:true})
+      await axios.delete(`${API_URL}/admin/order/${id}`,{withCredentials:true})
      
       dispatch(deleteOrderSuccess())
 
@@ -64,7 +66,7 @@ export const deleteOrders = id => async(dispatch)=>{
 export const updateOrders = (id,orderData) => async(dispatch)=>{
     try {
         dispatch(updateOrderRequest())
-     const {data}=  await axios.put(`http://127.0.0.1:8000/api/v1/admin/order/${id}`,orderData,{withCredentials:true})
+     const {data}=  await axios.put(`${API_URL}/admin/order/${id}`,orderData,{withCredentials:true})
      
       dispatch(updateOrderSuccess(data))
 

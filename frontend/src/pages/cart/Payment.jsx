@@ -11,6 +11,8 @@ import { createOrder } from "../../actions/orderActions";
 import { clearOrderError } from "../../slices/orderSlice";
 import { formatPriceINR } from "../../components/utils/formatPriceINR"
 
+const API_URL=import.meta.env.VITE_API_URL;
+
 function PaymentMethodRadio({ value, onChange, name = "payment-method" }) {
   const OPTIONS = [
     { id: "cod", label: "Cash on Delivery" },
@@ -125,14 +127,14 @@ const Payment = () => {
       withCredentials: true,
     };
 
-    await axios.post(`http://127.0.0.1:8000/api/v1/whatsappsms`, data, config);
+    await axios.post(`${API_URL}/whatsappsms`, data, config);
   };
 
   const startPayment = async () => {
     try {
       // Create order on server
       const { data } = await axios.post(
-        `http://127.0.0.1:8000/api/v1/payments/order`,
+        `${API_URL}/payments/order`,
         {
           amount: orderInfo.total,
           currency: "INR",
@@ -161,7 +163,7 @@ const Payment = () => {
         handler: async (response) => {
           try {
             const verify = await axios.post(
-              `http://127.0.0.1:8000/api/v1/payments/verify`,
+              `${API_URL}/payments/verify`,
               response,
               {
                 withCredentials: true,

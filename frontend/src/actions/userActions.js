@@ -47,11 +47,14 @@ import {
   userSuccess,
 } from "../slices/usersSlice";
 
+
+const API_URL=import.meta.env.VITE_API_URL;
+
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch(loginRequest());
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/v1/login`,
+      `${API_URL}/login`,
       {
         email,
         password,
@@ -76,7 +79,7 @@ export const register = (userData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/v1/register`,
+      `${API_URL}/register`,
       userData,
       config
     );
@@ -90,7 +93,7 @@ export const verifyEmail = (email, otp) => async (dispatch) => {
   try {
     dispatch(verifyRequest());
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/v1/verify-otp`,
+      `${API_URL}/verify-otp`,
       {
         email,
         otp,
@@ -107,7 +110,7 @@ export const resendOTP = (email) => async (dispatch) => {
   try {
     dispatch(resendOtpRequest());
     await axios.post(
-      `http://127.0.0.1:8000/api/v1/resend-otp`,
+      `${API_URL}/resend-otp`,
       {
         email,
       },
@@ -123,7 +126,7 @@ export const loadUser = async (dispatch) => {
   try {
     dispatch(loadUserRequest());
 
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/v1/myprofile`, {
+    const { data } = await axios.get(`${API_URL}/myprofile`, {
       withCredentials: true,
     });
     dispatch(loadUserSuccess(data));
@@ -134,7 +137,7 @@ export const loadUser = async (dispatch) => {
 
 export const logout = async (dispatch) => {
   try {
-    await axios.get(`http://127.0.0.1:8000/api/v1/logout`, {
+    await axios.get(`${API_URL}/logout`, {
       withCredentials: true,
     });
     dispatch(logoutSuccess());
@@ -155,7 +158,7 @@ export const updateProfile = (userData) => async (dispatch) => {
     };
     console.log([...userData]);
     const { data } = await axios.put(
-      `http://127.0.0.1:8000/api/v1/update`,
+      `${API_URL}/update`,
       userData,
       config
     );
@@ -177,7 +180,7 @@ export const updatePassword = (userData) => async (dispatch) => {
     };
 
     await axios.put(
-      `http://127.0.0.1:8000/api/v1/password/change`,
+      `${API_URL}/password/change`,
       userData,
       config
     );
@@ -201,7 +204,7 @@ export const forgotPassword = (userData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/v1/password/forgot`,
+      `${API_URL}/password/forgot`,
       userData,
       config
     );
@@ -225,7 +228,7 @@ export const resetPassword = (userData, token) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/v1/password/reset/${token}`,
+      `${API_URL}/password/reset/${token}`,
       userData,
       config
     );
@@ -248,7 +251,7 @@ export const getUsers = () => async (dispatch) => {
     dispatch(usersRequest());
 
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/v1/admin/users`,
+      `${API_URL}/admin/users`,
       {
         withCredentials: true,
       }
@@ -264,7 +267,7 @@ export const getUser = (id) => async (dispatch) => {
     dispatch(userRequest());
 
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/v1/admin/user/${id}`,
+      `${API_URL}/admin/user/${id}`,
       {
         withCredentials: true,
       }
@@ -279,7 +282,7 @@ export const deleteUser = (id) => async (dispatch) => {
   try {
     dispatch(deleteUserRequest());
 
-    await axios.delete(`http://127.0.0.1:8000/api/v1/admin/user/${id}`, {
+    await axios.delete(`${API_URL}/admin/user/${id}`, {
       withCredentials: true,
     });
     dispatch(deleteUserSuccess());
@@ -300,7 +303,7 @@ export const updateUser = (id, userData) => async (dispatch) => {
     };
 
     await axios.put(
-      `http://127.0.0.1:8000/api/v1/admin/user/${id}`,
+      `${API_URL}/admin/user/${id}`,
       userData,
       config
     );
