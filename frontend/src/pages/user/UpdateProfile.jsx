@@ -106,7 +106,7 @@ const UpdateProfile = () => {
 
   return (
     <div className="bg-slate-100">
-      <MetaData title={"Update Profile"} />
+      <MetaData title={`Hi ${user.name} Update Your Profile`} />
       <div className="max-w-2xl mx-auto min-h-screen -mt-16 p-6 flex justify-center items-center">
         <div className="w-full p-8 bg-white shadow-xl border border-slate-200 rounded-2xl">
           <form onSubmit={handleSubmit} encType="multipart/form-data">

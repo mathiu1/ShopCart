@@ -133,7 +133,7 @@ const VerifyOTP = () => {
 
   return (
     <>
-      <MetaData title={"Verify Email"} />
+      <MetaData title={"Verify Email OTP"} />
       <div className="min-h-screen flex items-center justify-center px-4 -mt-16">
         <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8 border border-slate-200">
           <h1 className="text-3xl font-bold text-center text-slate-800 mb-3">

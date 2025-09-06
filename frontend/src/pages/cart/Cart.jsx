@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { formatPriceINR } from "../../components/utils/formatPriceINR"
+import MetaData from "../../components/MetaData";
 
 const Cart = () => {
   const { items } = useSelector((state) => state.cartState);
@@ -35,6 +36,7 @@ const Cart = () => {
 
   return (
     <>
+    <MetaData title={"Your Cart Items"} />
       {items.length > 0 ? (
         <div className="bg-slate-100 min-h-screen relative pb-25 md:pb-5">
           <div className="max-w-7xl mx-auto p-5">

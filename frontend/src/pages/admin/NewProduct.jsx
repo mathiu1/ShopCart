@@ -4,6 +4,7 @@ import { createNewProduct } from "../../actions/productActions";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { clearError, clearProductCreated } from "../../slices/productSlice";
+import MetaData from "../../components/MetaData";
 
 const categories = [
   "Electronics",
@@ -177,6 +178,7 @@ const NewProduct = ({ navigate }) => {
 
   return (
     <div className="max-w-3xl text-sm md:text-base mx-auto p-8 bg-white rounded-xl shadow-lg mt-12">
+      <MetaData title={"Add New Product"} />
       <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
         Add New Product
       </h2>

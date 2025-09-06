@@ -17,6 +17,7 @@ import {
 } from "../../actions/orderActions";
 import { clearOrderDeleted, clearOrderError } from "../../slices/orderSlice";
 import { formatPriceINR } from "../../components/utils/formatPriceINR";
+import MetaData from "../../components/MetaData";
 
 const OrderList = ({ navigate, setEditId }) => {
   const [sorting, setSorting] = useState([]);
@@ -191,6 +192,7 @@ const OrderList = ({ navigate, setEditId }) => {
 
   return (
     <div className="bg-white shadow-lg p-2 py-5 mb-10 md:p-5 rounded-2xl">
+      <MetaData title={"Orders List"} />
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
         <h2 className="text-xl font-bold hidden lg:block text-gray-800">
           All Orders

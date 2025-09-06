@@ -278,7 +278,7 @@ const Payment = () => {
     <>
       {orderInfo && (
         <div className="bg-slate-100 min-h-screen -mt-16 pb-20 ">
-          <MetaData title={"Payment Process"} />
+          <MetaData title={"Pay Your Order"} />
           <div className="max-w-7xl mx-auto p-5">
             <div className="pt-25">
               <ChackoutStep shipping confirmOrder payment />

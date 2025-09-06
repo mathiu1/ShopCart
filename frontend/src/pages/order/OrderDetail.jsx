@@ -6,6 +6,7 @@ import Loader from "../../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { orderDetail } from "../../actions/orderActions";
 import { formatPriceINR } from "../../components/utils/formatPriceINR"
+import MetaData from "../../components/MetaData";
 
 export default function OrderDetails() {
   const { id } = useParams();
@@ -32,6 +33,7 @@ export default function OrderDetails() {
 
   return (
     <>
+    <MetaData title={"Order Details"} />
       {loading ? (
         <Loader />
       ) : (

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import MetaData from "../../components/MetaData";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.authState);
@@ -8,6 +9,7 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-10">
+      <MetaData title={`Hi ${user.name}`} />
       <div className="bg-white w-full max-w-2xl rounded-2xl shadow-md p-8">
         {/* Profile Header */}
         <div className="flex flex-col items-center">

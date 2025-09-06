@@ -9,11 +9,12 @@ import {
 import { MdDeleteForever } from "react-icons/md";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../components/Loader";
+
 import { formatDistanceToNow } from "date-fns";
 
 import { getReviews, deleteReview } from "../../actions/productActions";
 import { clearError, clearReviews, clearReviewsDeleted } from "../../slices/productSlice";
+import MetaData from "../../components/MetaData";
 
 const ReviewsList = () => {
   const [sorting, setSorting] = useState([]);
@@ -155,7 +156,9 @@ dispatch(clearReviews())
 
   return (
     <div className="bg-white shadow-lg p-5 md:p-8 mb-10 rounded-2xl">
-      {/* Product Search */}
+
+      <MetaData title={"Product Reviews List"} />
+      
       <div className="bg-gray-50 p-5 rounded-xl shadow-sm w-full max-w-2xl mx-auto">
         <form
           onSubmit={handleSubmit}

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveShippingInfo } from "../../slices/cartSlice";
 import toast from "react-hot-toast";
+import MetaData from "../../components/MetaData";
 
 export const validateShipping = (shippingInfo, navigator, items) => {
   if (
@@ -108,6 +109,7 @@ const Shipping = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen py-10">
+      <MetaData title={"Your Details"} />
       <div className="max-w-4xl mx-auto px-5">
         <ChackoutStep shipping />
 

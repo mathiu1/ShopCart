@@ -16,6 +16,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import { clearProductDeleted } from "../../slices/productSlice";
 import { formatPriceINR } from "../../components/utils/formatPriceINR";
+import MetaData from "../../components/MetaData";
 
 const ProductsList = ({ navigate, editId }) => {
   const [sorting, setSorting] = useState([]);
@@ -136,6 +137,7 @@ const ProductsList = ({ navigate, editId }) => {
 
   return (
     <div className="bg-white shadow-lg p-2 py-5 mb-10 md:p-5  rounded-2xl">
+      <MetaData title={"Products List"} />
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
         <h2 className="text-xl font-bold hidden lg:block text-gray-800">
           📦 All Products

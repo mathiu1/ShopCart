@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 import { formatPriceINR } from "../../components/utils/formatPriceINR"
 import Loader from "../../components/Loader";
+import MetaData from "../../components/MetaData";
 
 export default function MyOrders() {
   const { userOrders,loading  } = useSelector((state) => state.orderState);
@@ -22,6 +23,7 @@ export default function MyOrders() {
   return (
    
    <div className="bg-gray-50 p-6"> <div className="min-h-screen max-w-5xl mx-auto ">
+    <MetaData title={"My Orders List"} />
       <h1 className="text-2xl font-bold text-gray-800 mb-6">My Orders</h1>
 
       {userOrders && userOrders.length > 0 ? (

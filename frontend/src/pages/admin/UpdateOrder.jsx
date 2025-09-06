@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { orderDetail, updateOrders } from "../../actions/orderActions";
 import toast from "react-hot-toast";
 import { clearOrderError, clearOrderUpdated } from "../../slices/orderSlice";
-
+import MetaData from "../../components/MetaData";
 import { formatPriceINR } from "../../components/utils/formatPriceINR";
 
 export default function UpdateOrder({ navigate, editId, setEditId }) {
@@ -58,6 +58,8 @@ export default function UpdateOrder({ navigate, editId, setEditId }) {
 
   return (
     <>
+
+    <MetaData title={"Update Orders"} />
       {loading ? (
         <Loader />
       ) : (

@@ -18,6 +18,7 @@ import {
   clearUserUpdated,
 } from "../../slices/usersSlice";
 import { formatDistanceToNow } from "date-fns";
+import MetaData from "../../components/MetaData";
 
 const UsersList = () => {
   const [sorting, setSorting] = useState([]);
@@ -238,6 +239,7 @@ const UsersList = () => {
 
   return (
     <div className="bg-white shadow-lg p-2 py-5 mb-10 md:p-5 rounded-2xl">
+      <MetaData title={"Users List"} />
       {/* Search */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
         <h2 className="text-xl font-bold hidden lg:block text-gray-800">

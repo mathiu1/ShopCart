@@ -4,6 +4,8 @@ import { getProduct, updateProduct } from "../../actions/productActions";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { clearError, clearProductUpdated } from "../../slices/productSlice";
+import Loader from "../../components/Loader";
+import MetaData from "../../components/MetaData";
 
 const categories = [
   "Electronics",
@@ -34,7 +36,7 @@ const UpdateProduct = ({ navigate, editId, setEditId }) => {
   // Validation state
   const [errors, setErrors] = useState({});
 
-  const { uploadLoading, error, isProductUpdate, product } = useSelector(
+  const { uploadLoading, error, isProductUpdate, product ,loading} = useSelector(
     (state) => state.productState
   );
 
@@ -197,8 +199,12 @@ product.images.forEach(image=>{
         : "border-gray-300 focus:ring-indigo-500"
     } shadow-sm`;
 
+
+if(loading) return <Loader/>
+
   return (
     <div className="max-w-3xl text-sm md:text-base mx-auto p-8 bg-white rounded-xl shadow-lg mt-12">
+      <MetaData title={"Update Product"} />
       <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
         Update Product
       </h2>

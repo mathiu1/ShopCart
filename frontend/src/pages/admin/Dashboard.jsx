@@ -24,6 +24,7 @@ import {
 
 import { formatPriceINR } from "../../components/utils/formatPriceINR";
 import Loader from "../../components/Loader";
+import MetaData from "../../components/MetaData";
 
 
 const productNames = ["Laptop", "Phone", "Shoes", "Headphones", "Watch", "Bag"];
@@ -200,6 +201,7 @@ const Dashboard = ({navigate}) => {
 
   return (
     <div className="space-y-10">
+      <MetaData title={"Dashboard"} />
       <h2 className="text-lg font-semibold mb-4">Overview</h2>
 
       {/* Metric Cards */}

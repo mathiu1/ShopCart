@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import noResults from "../../../public/image/notfound.png";
 import Search from "../../components/Search";
 import { formatPriceINR } from "../../components/utils/formatPriceINR";
+import MetaData from "../../components/MetaData";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
@@ -116,6 +117,7 @@ const AllProducts = () => {
 
   return (
     <>
+    <MetaData title={"Buy The Best Product"} />
       {loading ? (
         <Loader />
       ) : (

@@ -69,7 +69,7 @@ const ConfirmOrder = () => {
   return (
     <>
       <div className="bg-slate-100 min-h-screen -mt-16 pb-20 ">
-        <MetaData title={"confirm order"} />
+        <MetaData title={"Confirm Your Order"} />
         <div className="max-w-7xl mx-auto p-5">
           <div className="pt-25">
             <ChackoutStep shipping confirmOrder />
