@@ -77,7 +77,7 @@ const getMonthLabel = (date) => {
 };
 
 
-const Dashboard = () => {
+const Dashboard = ({navigate}) => {
   const { products = [] } = useSelector((state) => state.productsState);
   const { adminOrders = [] } = useSelector((state) => state.orderState);
   const { users = [] ,loading} = useSelector((state) => state.usersState);
@@ -204,24 +204,25 @@ const Dashboard = () => {
 
       {/* Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-6">
-        <MetricCard
+        <div onClick={()=>navigate("allProducts")}><MetricCard
           label="Total Products"
           value={totalProducts}
           icon={<FaBox className="text-indigo-600 text-3xl" />}
           color="indigo"
-        />
-        <MetricCard
+          
+        /></div>
+       <div onClick={()=>navigate("allUsers")}> <MetricCard
           label="Total Users"
           value={totalUsers}
           icon={<FaUsers className="text-green-600 text-3xl" />}
           color="green"
-        />
-        <MetricCard
+        /></div>
+        <div onClick={()=>navigate("orders")}><MetricCard
           label="Total Orders"
           value={overallOrders}
           icon={<FaShoppingCart className="text-yellow-600 text-3xl" />}
           color="yellow"
-        />
+        /></div>
         <MetricCard
           label="Total Revenue"
           value={`${formatPriceINR(overallRevenue.toFixed(2))}`}

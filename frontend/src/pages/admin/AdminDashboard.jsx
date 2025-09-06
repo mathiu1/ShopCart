@@ -177,7 +177,7 @@ const AdminDashboard = () => {
         {/* Content */}
         <main className="flex-1 p-2 md:p-5 overflow-y-auto">
           {/* Dashboard Overview */}
-          {active === "dashboard" && <Dashboard />}
+          {active === "dashboard" && <Dashboard  navigate={setActive}/>}
 
           {/* Add Product */}
           {active === "addProduct" && <NewProduct navigate={setActive} />}
