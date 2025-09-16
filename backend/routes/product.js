@@ -54,6 +54,6 @@ router
 
 router
   .route("/admin/review")
-  .delete(isAuthenticatedUser, authorizeRoles("admin"),deleteReview);
+  .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteReview);
 
 module.exports = router;
