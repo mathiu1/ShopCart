@@ -188,13 +188,13 @@ exports.logoutUser = (req, res, next) => {
 // Forgot Pass - api/v1/forgot
 exports.forgotPassword = catchAsyncError(async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
-console.log("test 1")
+
   if (!user) {
     return next(new ErrorHandler("User not found with this email", 404));
   }
 
   const resetToken = user.getResetToken();
-  console.log("test 2 ",resetToken)
+  
 
   await user.save({ validateBeforeSave: false });
 
@@ -208,7 +208,7 @@ let BASE_URL = process.env.FRONTEND_URL;
   
   const resetUrl = `${BASE_URL}/password/reset/${resetToken}`;
   
-  console.log("test 3",resetUrl)
+  
 
   const message = `Your password reset url is as follows \n\n 
     ${resetUrl} \n\n If you have not requested this email, then ignore it.`;
