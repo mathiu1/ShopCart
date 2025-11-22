@@ -25,7 +25,7 @@ module.exports = (err, req, res, next) => {
     }
 
     if (err.name == "CastError") {
-      message = `Resource not fount : ${err.path}`;
+      message = `Resource not found : ${err.path}`;
       error = new ErrorHandler(message, 400);
       err.statusCode = 400;
     }

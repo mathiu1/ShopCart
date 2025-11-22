@@ -18,6 +18,7 @@ function loadTemplate(type) {
 
   return fs.readFileSync(filePath, "utf8");
 }
+console.log("email",process.env.GPASS_KEY,process.env.GMAIL)
 
 const sendEmail = async (options) => {
   const transport = {
