@@ -20,12 +20,23 @@ function loadTemplate(type) {
 }
 
 const sendEmail = async (options) => {
+  // const transport = {
+  //   service: "gmail",
+  //   auth: {
+  //     user: process.env.GMAIL,
+  //     pass: process.env.GPASS_KEY,
+  //   },
+  // };
   const transport = {
-    service: "gmail",
+    host: "smtp.gmail.com", // Explicitly define the host
+    port: 587, // Use the common STARTTLS port
+    secure: false, // Must be false for port 587
     auth: {
       user: process.env.GMAIL,
-      pass: process.env.GPASS_KEY,
+      pass: process.env.GPASS_KEY, // Use the App Password here!
     },
+    // Optional: Add a timeout if the connection is slow (Render might need this)
+    connectionTimeout: 30000,
   };
   const transporter = nodemailer.createTransport(transport);
 
@@ -38,7 +49,7 @@ const sendEmail = async (options) => {
   } else if (options.type === "reset") {
     template = template.replace(/{{TOKEN}}/g, options.token);
   }
- console.log(process.env.GMAIL," ",process.env.GPASS_KEY)
+
   const message = {
     from: process.env.GMAIL,
     to: options.email,
