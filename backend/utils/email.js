@@ -38,7 +38,7 @@ const sendEmail = async (options) => {
   } else if (options.type === "reset") {
     template = template.replace(/{{TOKEN}}/g, options.token);
   }
-
+ console.log("mathi",options);
   const message = {
     from: process.env.GMAIL,
     to: options.email,
