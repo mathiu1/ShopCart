@@ -1,7 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 const nodemailer = require("nodemailer");
+const sgMail = require('@sendgrid/mail');
 
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // Dynamic template loader
 function loadTemplate(type) {
   let filePath;
@@ -57,7 +59,17 @@ const sendEmail = async (options) => {
     html: template,
   };
 
-  await transporter.sendMail(message);
+  //await transporter.sendMail(message);
+
+  try {
+    //  Send the email using the SendGrid API
+    await sgMail.send(message);
+    console.log(`Email successfully sent to ${options.email} via SendGrid API.`);
+  } catch (error) {
+    // Check error details for non-connection issues (e.g., bad API key, unverified sender)
+    console.error("SendGrid API Error:", error.response ? error.response.body : error);
+    throw new Error("Failed to send email via SendGrid API.");
+  }
 };
 
 module.exports = sendEmail;
