@@ -29,18 +29,18 @@ const sendEmail = async (options) => {
   //     pass: process.env.GPASS_KEY,
   //   },
   // };
-  const transport = {
-    host: "smtp.gmail.com", // Explicitly define the host
-    port: 587, // Use the common STARTTLS port
-    secure: false, // Must be false for port 587
-    auth: {
-      user: process.env.GMAIL,
-      pass: process.env.GPASS_KEY, // Use the App Password here!
-    },
-    // Optional: Add a timeout if the connection is slow (Render might need this)
-    connectionTimeout: 30000,
-  };
-  const transporter = nodemailer.createTransport(transport);
+  // const transport = {
+  //   host: "smtp.gmail.com", // Explicitly define the host
+  //   port: 587, // Use the common STARTTLS port
+  //   secure: false, // Must be false for port 587
+  //   auth: {
+  //     user: process.env.GMAIL,
+  //     pass: process.env.GPASS_KEY, // Use the App Password here!
+  //   },
+  //   // Optional: Add a timeout if the connection is slow (Render might need this)
+  //   connectionTimeout: 30000,
+  // };
+  // const transporter = nodemailer.createTransport(transport);
 
   // Load template (otp or reset)
   let template = loadTemplate(options.type);
