@@ -63,20 +63,22 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
 
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-  user = await User.create({
-    name,
-    email,
-    password,
-    avatar,
-    otp,
-    otpExpire: Date.now() + 5 * 60 * 1000, // 5 mins expiry
-  });
+ 
 
   await sendEmail({
     email,
     subject: "Verify Your Email - OTP",
     type: "otp",
     otp,
+  });
+
+   user = await User.create({
+    name,
+    email,
+    password,
+    avatar,
+    otp,
+    otpExpire: Date.now() + 5 * 60 * 1000, // 5 mins expiry
   });
 
   res.status(201).json({
