@@ -10,8 +10,6 @@ const path = require("path");
 //Get Products  - /api/v1/products
 exports.getProducts = catchAsyncError(async (req, res, next) => {
 
-  
-   
   let buildQuery = () => {
     return new APIFeatures(Product.find(), req.query).search().filter().sort();
   };
@@ -29,7 +27,7 @@ exports.getProducts = catchAsyncError(async (req, res, next) => {
   const maxValue = maxProduct.length ? maxProduct[0].price : 0;
   const minValue = minProduct.length ? minProduct[0].price : 0;
 
-  console.log("max-value:", maxValue, "min-value:", minValue);
+  
 
   // get all unique categories (ignores filters → global list)
   const uniqueCategories = await Product.distinct("category");

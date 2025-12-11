@@ -1,9 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const nodemailer = require("nodemailer");
-const sgMail = require('@sendgrid/mail');
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // Dynamic template loader
 function loadTemplate(type) {
   let filePath;
@@ -29,18 +27,21 @@ const sendEmail = async (options) => {
   //     pass: process.env.GPASS_KEY,
   //   },
   // };
-  // const transport = {
-  //   host: "smtp.gmail.com", // Explicitly define the host
-  //   port: 587, // Use the common STARTTLS port
-  //   secure: false, // Must be false for port 587
-  //   auth: {
-  //     user: process.env.GMAIL,
-  //     pass: process.env.GPASS_KEY, // Use the App Password here!
-  //   },
-  //   // Optional: Add a timeout if the connection is slow (Render might need this)
-  //   connectionTimeout: 30000,
-  // };
-  // const transporter = nodemailer.createTransport(transport);
+
+
+const transport = {
+    host: "smtp.gmail.com", // Explicitly define the host
+    port: 587, // Use the common STARTTLS port
+    secure: false, // Must be false for port 587
+    auth: {
+      user: process.env.GMAIL,
+      pass: process.env.GPASS_KEY, // Use the App Password here!
+    },
+    // Optional: Add a timeout if the connection is slow (Render might need this)
+    connectionTimeout: 30000,
+  };
+
+  const transporter = nodemailer.createTransport(transport);
 
   // Load template (otp or reset)
   let template = loadTemplate(options.type);
@@ -59,17 +60,7 @@ const sendEmail = async (options) => {
     html: template,
   };
 
-  //await transporter.sendMail(message);
-
-  try {
-    //  Send the email using the SendGrid API
-    await sgMail.send(message);
-    console.log(`Email successfully sent to ${options.email} via SendGrid API.`);
-  } catch (error) {
-    // Check error details for non-connection issues (e.g., bad API key, unverified sender)
-    console.error("SendGrid API Error:", error.response ? error.response.body : error);
-    throw new Error("Failed to send email via SendGrid API.");
-  }
+  await transporter.sendMail(message);
 };
 
 module.exports = sendEmail;

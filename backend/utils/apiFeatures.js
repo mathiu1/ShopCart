@@ -38,7 +38,7 @@ class APIFeatures {
     if (category) {
       let cate = category.split(",");
 
-      let buildq = {};
+      let buildq = {};  
       buildq["category"] = { $in: cate };
       
       this.query.find(buildq);
