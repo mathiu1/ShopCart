@@ -38,7 +38,7 @@ const transport = {
       pass: process.env.GPASS_KEY, // Use the App Password here!
     },
     // Optional: Add a timeout if the connection is slow (Render might need this)
-    connectionTimeout: 30000,
+    connectionTimeout: 5000,
   };
 
   const transporter = nodemailer.createTransport(transport);

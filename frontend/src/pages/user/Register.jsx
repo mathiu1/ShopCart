@@ -12,6 +12,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [passType, setPassType] = useState(true);
   const [avatar, setAvatar] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const defaultImgUrl =
     "https://media.istockphoto.com/id/1553217327/vector/user-profile-icon-avatar-person-sign-profile-picture-portrait-symbol-easily-editable-line.jpg?s=170667a&w=0&k=20&c=xUuHLFaa94WIFdV-XBgxX9SSsaJJgGQhE1Tmevqrytg=";
@@ -102,6 +103,11 @@ const Register = () => {
 
 
 useEffect(() => {
+     if (error=="Connection timeout") {  
+      setIsModalOpen(true)
+      dispatch(clearAuthError());
+      return
+    }
     if (error) {
       toast.error(error);
       dispatch(clearAuthError());
@@ -239,6 +245,53 @@ useEffect(() => {
           </p>
         </form>
       </div>
+
+                       {/* Modal Overlay */}
+<div
+  className={`fixed inset-0 z-50 flex items-center justify-center bg-black/40 transition-opacity duration-300 ${
+    isModalOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+  }`}
+  onClick={() => setIsModalOpen(false)}
+>
+  {/* Modal Box */}
+  <div
+    className={`bg-white rounded-lg p-6 w-80 md:w-96 shadow-lg transform transition-all duration-300 ${
+      isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
+    }`}
+    onClick={(e) => e.stopPropagation()}
+  >
+    <h3 className="text-lg text-red-500 font-semibold mb-4">
+  Email Sending Error!
+</h3>
+<p className="text-gray-600 mb-6">
+  This website is hosted on Render's free tier. The platform currently blocks SMTP ports, so emails cannot be sent.
+</p>
+<p className="text-gray-600 mb-6">
+  I am currently working on implementing an OAuth Login System.
+</p>
+<p className="text-gray-600 mb-6">
+  If you are an interviewer or HR, please use the guest credentials below to log in:
+</p>
+<p className="text-gray-600">
+  Email: <b>guest_user@shopcart.com</b>
+</p>
+<p className="text-gray-600 mb-6">
+  Password: <b>guest123</b>
+</p>
+    <div className="flex justify-end gap-3">
+      
+      <button
+        className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+        onClick={() => {
+         
+          setIsModalOpen(false);
+        }}
+      >
+        Ok
+      </button>
+    </div>
+  </div>
+</div>
     </div>
   );
 };
