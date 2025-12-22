@@ -56,6 +56,13 @@ exports.uploads = multer({
   
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
+
+const dir = './backend/uploads/products';
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir, { recursive: true });
+}
+
       cb(null, path.join(__dirname, "..", "uploads/products"));
     },
     filename: function (req, file, cb) {
