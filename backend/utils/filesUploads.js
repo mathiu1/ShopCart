@@ -2,7 +2,7 @@ const multer = require("multer");
 const path = require("path");
 const { v4: uuidv4 } = require('uuid');
 const ErrorHandler = require("../utils/errorHandler");
-
+const fs = require("fs");
 
 
 const fileFilter=(req,file,cb)=>{
@@ -16,9 +16,18 @@ const fileFilter=(req,file,cb)=>{
     }
 }
 
+
+
 exports.upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
+
+const dir = './backend/uploads/user';
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir, { recursive: true });
+}
+
       cb(null, path.join(__dirname, "..", "uploads/user"));
     },
     filename: function (req, file, cb) {
