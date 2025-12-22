@@ -299,17 +299,24 @@ exports.changePassword = catchAsyncError(async (req, res, next) => {
 exports.updateProfile = catchAsyncError(async (req, res, next) => {
   let avatar = req.user.avatar;
 
+  
+const dir = './backend/uploads/user';
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir, { recursive: true });
+}
+
   if (req.file) {
     avatar = `${req.protocol}://${req.host}/uploads/user/${req.file.newName}`;
-    // if (req.user.avatar) {
-    //   const parts = req.user.avatar.split("/");
-    //   const filename = parts[parts.length - 1];
+    if (req.user.avatar) {
+      const parts = req.user.avatar.split("/");
+      const filename = parts[parts.length - 1];
 
-    //   // const oldPath = path.join(__dirname, "..", "/uploads/user/", filename);
-    //   // if (fs.existsSync(oldPath)) {
-    //   //   fs.unlinkSync(oldPath);
-    //   // }
-    // }
+      const oldPath = path.join(__dirname, "..", "/uploads/user/", filename);
+      if (fs.existsSync(oldPath)) {
+        fs.unlinkSync(oldPath);
+      }
+    }
   }
   const newUserData = {
     name: req.body.name,
